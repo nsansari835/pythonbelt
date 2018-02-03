@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}    
+    <link rel="stylesheet" href="{% static 'pythonbelt2_app/style.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'pythonbelt2_app/normalize.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'pythonbelt2_app/skeleton.css' %}" media="screen" title="no title"  charset="utf-8">
+    <title>Add Plan</title>
+</head>
+<body>
+    <a href="/travels"> Home</a>    <a href="/logout">Log Out</a>
+    <h2>Add a Trip</h2>
+    <br>
+    <br>
+    <form action="/addtrip" method="POST">
+        {% csrf_token %}
+        Destination: <input type="text" name="destination">
+        Description: <input type="text" name="desc">
+        Travel Date From: <input type="date" name="from_x">
+        Travel Date To: <input type="date" name="to_x">
+                        <input type="submit" value="Add">
+    </form>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

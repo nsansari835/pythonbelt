@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}    
+    <link rel="stylesheet" href="{% static 'pythonbelt2_app/style.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'pythonbelt2_app/normalize.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'pythonbelt2_app/skeleton.css' %}" media="screen" title="no title"  charset="utf-8">
+    <title>Quotes</title>
+</head>
+<body>
+    <a href="/travels"> Home</a>
+    <a href="/logout">Log Out</a>
+    {% for k in content%}
+    <div>
+            <h3>{{k.destination}}:</h3>
+            Planned by: {{k.user.name}}<br>
+            Description: {{k.description}}<br>
+            Travel Date From: {{k.travelfrom}}<br>
+            Travel Date To: {{k.travelto}}
+            <br>
+        </div>
+    {%endfor%}
+
+    <div>
+        <h3>Other users joining</h3>
+        {% for k in join%}
+        {{k.user.name}}
+
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

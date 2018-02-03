@@ -1,0 +1,12 @@
+*{
+    margin: 10px;
+    padding: 0px;
+   }
+
+#box{
+    vertical-align: top;
+	display: inline-block;
+    margin-left: 600px;
+    width: 50%;
+    background-color: aqua;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {% load static %}    
+        <link rel="stylesheet" href="{% static 'pythonbelt2_app/style.css' %}" media="screen" title="no title"  charset="utf-8">
+        <link rel="stylesheet" href="{% static 'pythonbelt2_app/normalize.css' %}" media="screen" title="no title"  charset="utf-8">
+        <link rel="stylesheet" href="{% static 'pythonbelt2_app/skeleton.css' %}" media="screen" title="no title"  charset="utf-8">
+        <title>Travel Dashboard</title>
+    </head>
+    <body>
+        <div class = "header">
+            <p> Welcome {{user.name}}</p>
+
+            <a href="/logout">Log Out</a>
+        </div>
+
+        <div class="mytrips">
+            <h4>Your Trip Schedules</h4>  
+            <table>
+                <thead>
+                    <tr>
+                        <th>Destination</th>
+                        <th>Travel Start Date</th>
+                        <th>Travel End Date</th>
+                        <th>Plan</th>
+                    </tr>
+                </thead>
+
+                </tbody>
+                    {% for k in mytrips %}
+                    </tr>
+                        
+                    <td><a href="/destination/{{k.id}}">{{k.destination}}</a></td>
+                    <td>{{k.travelfrom}}</td>
+                    <td>{{k.travelto}}</td>
+                    <td>{{k.description}}</td>
+                    <tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- <h3>Quotable Quotes</h3>  
+                {% for allquote in allquotes %}
+                    <p>{{allquote.author}}:{{allquote.message}}</p>
+                    <p>Posted by <a href= "/users/{{allquote.uploader.id}}">{{allquote.uploader.name}}</a></p>
+
+                    <a href="/quotes/addfav/{{allquote.id}}"><button>Add to favorites</button></a>
+                {% endfor %} -->
+        <div>
+
+        <div class="othertrips">
+            <h4>Other User's Travel Plans</h4>  
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Destination</th>
+                        <th>Travel Start Date</th>
+                        <th>Travel End Date</th>
+                        <th>Do You Want to Join?</th>
+                    </tr>
+                </thead>
+
+                </tbody>
+                    {% for k in othertrips %}
+                    </tr>
+                        <td>{{k.user.name}}</td>
+                        <td><a href="/destination/{{k.id}}">{{k.destination}}</a></td>
+                        <td>{{k.travelfrom}}</td>
+                        <td>{{k.travelto}}</td>
+                        <td>
+                            <a href="/join/{{user.id}}"><button>Poke!</button></a>
+                        </td>
+                    <tr>
+                    {% endfor %}
+                </tbody>
+            </table>>
+        <div>
+        
+        <a href="/add"><p>Add Travel Plan</p></a>
+        
+
+        {% if messages %}
+            {% for message in messages %}
+                    <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    </body>
+</html>
